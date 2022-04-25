@@ -34,6 +34,9 @@ img {
 }
 
 /*====  BASE ============================ */
+html{
+  scroll-behavior: smooth;
+}
 body {
   font: 400 1rem 'DM Sans', sans-serif;
   color: var(--text-color);
@@ -67,11 +70,19 @@ body {
   height: 1px;
   background: linear-gradient(
     270deg,
-    hsla(var(--hue), 36%, 57%, 1) 0%,
-    hsla(var(--hue), 65%, 88%, 0.34) 100%
+    hsla(var(--hue), 36%, 57%, 1),
+    hsla(var(--hue), 65%, 88%, 0.34)
   );
 }
 
+.divider-2 {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 65%, 88%, 0.34),
+    hsla(var(--hue), 36%, 57%, 1)
+  );
+}
 /*====  LAYOUT ============================ */
 .container {
   margin-left: 1.5rem;
@@ -87,6 +98,17 @@ body {
   padding: 5rem 0;
 }
 
+.section .title{
+  margin-bottom: 1rem;
+}
+
+.section header{
+  margin-bottom: 4rem;
+}
+.section header strong{
+  color: var(--base-color);
+}
+
 #header {
   border-bottom: 1px solid #e4e4e4;
   margin-bottom: 2rem;
@@ -99,7 +121,9 @@ body {
   background-color: var(--body-color);
   width: 100%;
 }
-
+#header.scroll{
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 1);
+}
 main {
   margin-top: calc(var(--header-height) + 2rem);
 }
@@ -156,6 +180,11 @@ nav ul li a:hover::after{
 nav .menu{
   opacity: 0;
   visibility: hidden;
+  top: -20rem;
+  transition: 0.2s;
+}
+nav .menu ul{
+  display: none;
 }
 /*Mostrar menu*/
 nav.show .menu{
@@ -172,11 +201,10 @@ nav.show .menu{
   top: 0;
   left: 0;
 }
-nav.show .menu{
+nav.show .menu ul{
   display: grid;
   place-content: center;
 }
-
 nav.show ul.grid{
   gap: 4rem;
 }
@@ -193,13 +221,15 @@ nav .icon-close{
 
   position: absolute;
   right: 1.5rem;
+  top: -1.5rem;
 
-  
+  transition: 0.2s;
 }
 
 nav.show .icon-close{
   visibility: visible;
   opacity: 1;
+  top: 1.5rem;
 }
 /*====  HOME ============================ */
 #home {
@@ -247,4 +277,64 @@ nav.show .icon-close{
 
 #home .text p {
   margin-bottom: 2rem;
+}
+
+/*====  ABOUT ============================ */
+#about{
+  background: white;
+}
+
+#about .image {
+  position: relative;
+}
+
+#about .image::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  top: -8.3%;
+  left: -33%;
+  z-index: 0;
+}
+
+#about .image img {
+  position: relative;
+}
+
+#about .image img,
+#about .image::before {
+  border-radius: 0.25rem;
+}
+
+#about .text {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+/*====  SERVICE ============================ */
+
+.card.grid{
+  gap: 1.5rem;
+}
+
+.card{
+  padding: 3.65rem 2rem;
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8);
+  border-bottom: 0.25rem solid var(--base-color);
+  border-radius: 0.25rem 0.25rem 0 0;
+  text-align: center;
+}
+
+.card i{
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 5rem;
+  color: var(--base-color);
+}
+
+.card .title{
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
