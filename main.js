@@ -28,3 +28,30 @@ window.addEventListener('scroll', () => {
     header.classList.remove('scroll')
   }
 })
+
+/**Testimonials slider/carosel swiper */
+const swiper = new Swiper('.swiper-container', {
+  slidePerView: 1,
+  pagination: {
+    el: '.swiper-pagination'
+  },
+  mousewheel: true,
+  keybord: true
+})
+/**ScrollReveal: Mostra elementos quando der scroll na pagina*/
+const scrollReveal = ScrollReveal({
+  origin: 'top',
+  distance: '30px',
+  duration: 700,
+  reset: true
+})
+
+scrollReveal.reveal(
+  `#home .image, #home .text,
+  #about .image, #about .text,
+  #services header, #services .card,
+  #testimonials header, #testimonials .testimonials
+  #contact .text, #contact .links
+  `,
+  { interval: 100 }
+)
